@@ -1,7 +1,27 @@
+<?php
+/** @var string $contentHTML */
+/** @var \Framework\Core\IAuthenticator $auth */
+/** @var \Framework\Support\LinkGenerator $link */
+?>
+
 <!doctype html>
 <html lang="sk">
 <head>
-    <title>Bronze Gym - Header</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bronze Gym - Template</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <style>
+        .brand-icon {
+            width: 28px;
+            height: 28px;
+        }
+        /* Reverse order on the left side now */
+        .left-group {
+            flex-direction: row-reverse;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-light border-bottom py-2">
@@ -21,10 +41,10 @@
                     </svg>
                     BRONZE GYM
                 </a>
-                <a class="nav-link" href="/cennik">Cenník</a>
-                <a class="nav-link" href="/treningy">Tréningy</a>
-                <a class="nav-link" href="/o-nas">O nás</a>
-                <a class="nav-link" href="/kontakt">Kontakt</a>
+                <a class="nav-link" href="/cennik">Tréneri</a>
+                <a class="nav-link" href="/treningy">Pernamentky</a>
+                <a class="nav-link" href="/o-nas">Skupinové hodiny</a>
+                <a class="nav-link" href="/kontakt">Galéria</a>
             </div>
 
         </div>
@@ -37,6 +57,19 @@
 
     </div>
 </nav>
+
+<div class="container-fluid mt-3">
+    <div class="web-content">
+        <?= $contentHTML ?>
+    </div>
+</div>
+
+<div class="mt-auto bg-light text-center text-lg-start border-top py-3">
+    <div class="text-center p-3">
+        © 2025 Bronze Gym — All rights reserved.
+    </div>
+</div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
