@@ -1,0 +1,23 @@
+.hero-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.text-bubble {
+    position: absolute;
+    top: 20%;
+    left: 5%;
+    background: black;
+    color: white;
+    margin-top: 20px;
+    padding: 20px 30px;
+    border: 2px solid #9f9809;
+    font-size: 24px;
+    width: 420px;
+    border-radius: 6px;
+}
+
+.text-bubble span {
+    color: #9f9809;
+    font-weight: bold;
+}

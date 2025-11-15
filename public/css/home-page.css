@@ -1,13 +1,6 @@
-/* HERO SECTION */
+/* HERO */
 .home-hero-div {
     position: relative;
-}
-
-.home-hero-img {
-    margin-top: 70px;
-    width: 100%;
-    height: auto;
-    display: block;
 }
 
 .home-hero-text {

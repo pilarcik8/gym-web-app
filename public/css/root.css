@@ -18,6 +18,13 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.hero-img {
+    margin-top: 70px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 /* ---------- NAVBAR ---------- */
 
 #navbar {

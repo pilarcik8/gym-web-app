@@ -1,5 +1,4 @@
 <?php
-
 /** @var \Framework\Support\LinkGenerator $link */
 ?>
 
@@ -7,10 +6,10 @@
     <title>GymApp | Domov</title>
     <link rel="stylesheet" href="/css/home-page.css">
 </head>
-<body>
 
+<body>
 <div class="home-hero-div">
-    <img src="/images/bezec-home.png" alt="Beziaci muz" class="home-hero-img">
+    <img src="/images/bezec-home.png" alt="Beziaci muz" class="hero-img">
     <div class="home-hero-text">
         <span class="hero-line-1">BUĎ LEPŠÍM JA</span>
         <br>

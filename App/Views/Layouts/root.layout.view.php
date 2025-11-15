@@ -16,6 +16,7 @@
     <!-- Font Awesome Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/root.css">
+    <script src="<?= $link->asset('js/script.js') ?>"></script>
 </head>
 <body>
 
@@ -26,15 +27,15 @@
         <div class="d-flex align-items-center gap-3 left-group">
 
             <div class="navbar-nav d-flex flex-row gap-3">
-                <a id = "home-icon-name" href="/../App/Views/index.view.php" class="d-flex align-items-center text-decoration-none fw-bold text-dark gap-2">
+                <a id = "home-icon-name" href="<?= $link->url("home.index") ?>" class="d-flex align-items-center text-decoration-none fw-bold text-dark gap-2">
                     <!-- ikona dumbell-->
                     <i class="fa-solid fa-dumbbell fa-lg" aria-hidden="true"></i>
                     BRONZE GYM
                 </a>
-                <a class="nav-link" href="/cennik">Tréneri</a>
-                <a class="nav-link" href="/treningy">Pernamentky</a>
-                <a class="nav-link" href="/o-nas">Skupinové hodiny</a>
-                <a class="nav-link" href="/kontakt">Galéria</a>
+                <a class="nav-link" href="<?= $link->url("home.coaches") ?>">Tréneri</a>
+                <a class="nav-link" href="/../App/Views/pernametky.view.php">Pernamentky</a>
+                <a class="nav-link" href="/../App/Views/skupinove-hodiny.view.php">Skupinové hodiny</a>
+                <a class="nav-link" href="/../App/Views/galeria.view.php">Galéria</a>
             </div>
 
         </div>
