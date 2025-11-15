@@ -13,6 +13,59 @@
     <div class="home-hero-text">Buď lepší JA</div>
 </div>
 
+<div class="co-ponukame">
+    <div class="square-odd">
+        <h2 class="sq-title">Silový tréning</h2>
+        <p class="sq-text">Profesionálne vybavenie na naberanie sily a budovanie svalov.</p>
+    </div>
+
+    <div class="square-even">
+        <h2 class="sq-title">Cardio zóna</h2>
+        <p class="sq-text">Bežecké pásy, bicykle a eliptické trenažéry pre lepšiu kondíciu.</p>
+    </div>
+
+    <div class="square-odd">
+        <h2 class="sq-title">Skupinové lekcie</h2>
+        <p class="sq-text">Dynamické tréningy pre všetky úrovne – od jógy po HIIT.</p>
+    </div>
+
+    <div class="square-even">
+        <h2 class="sq-title">Osobný tréner</h2>
+        <p class="sq-text">Individuálne plány a profesionálne vedenie na mieru.</p>
+    </div>
+
+    <div class="square-odd">
+        <h2 class="sq-title">Regenerácia</h2>
+        <p class="sq-text">Priestor na strečing a techniky pre rýchlejšiu obnovu.</p>
+    </div>
+
+    <div class="square-even">
+        <h2 class="sq-title">Výživové poradenstvo</h2>
+        <p class="sq-text">Pomoc pri výbere stravy, ktorá podporí tvoje ciele.</p>
+    </div>
+
+    <div class="square-odd">
+        <h2 class="sq-title">Meranie telesných parametrov</h2>
+        <p class="sq-text">Analýza tuku, svalovej hmoty a pokroku.</p>
+    </div>
+
+    <div class="square-even">
+        <h2 class="sq-title">Funkčná zóna</h2>
+        <p class="sq-text">Priestor s pomôckami na dynamický a funkčný tréning.</p>
+    </div>
+
+    <div class="square-odd">
+        <h2 class="sq-title">Relax zóna</h2>
+        <p class="sq-text">Miesto na oddych po náročnom tréningu.</p>
+    </div>
+
+    <div class="square-even">
+        <h2 class="sq-title">Tréning pre začiatočníkov</h2>
+        <p class="sq-text">Jednoduché a bezpečné plány pre každého, kto začína.</p>
+    </div>
+</div>
+
+
 <main class="container py-5">
     <h1 class="text-center mb-4">Vitajte v našej posilňovni!</h1>
     <p class="lead text-center">Spravujte tréningy, permanentky a rezervácie jednoducho online.</p>

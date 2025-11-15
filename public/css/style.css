@@ -67,3 +67,55 @@ html {
 .home-hero-div {
     position: relative;
 }
+
+.co-ponukame {
+    position: relative;
+    top: 50px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    animation: moveLine 25s linear infinite;
+
+    flex-wrap: nowrap;
+}
+
+.square-even {
+    background: #9f9809;
+}
+
+.square-odd {
+    background: #ffffff;
+}
+
+.square-odd, .square-even {
+    flex: 0 0 auto;
+    width: 800px;
+    height: 400px;
+    margin-left: 50px;
+    border-radius: 30px;
+    color: #070303;
+}
+
+@keyframes moveLine {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.sq-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.sq-text {
+    font-size: 1rem;
+    margin: 0 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
