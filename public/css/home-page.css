@@ -1,0 +1,154 @@
+/* HERO SECTION */
+.home-hero-div {
+    position: relative;
+}
+
+.home-hero-img {
+    margin-top: 70px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.home-hero-text {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    transform: translate(-15%, -50%);
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px #000000;
+}
+
+.hero-line-1 {
+    color: white;
+}
+
+.hero-line-2 {
+    color: #9f9809;
+}
+
+/* ---------- TEXT NAD “čo ponúkame” ---------- */
+
+.sluzby-wrapper {
+    text-align: left;
+    margin-top: 45px;
+}
+
+.sluzby-riadok-1 {
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 1000;
+    color: #9f9809;
+    display: inline-block;      /* aby rotácia fungovala správne */
+    transform: rotate(-25deg);
+    margin-bottom: 35px;        /* odstup od druhého riadku */
+}
+
+.sluzby-riadok-2 {
+    margin-left: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+}
+
+/* ---------- SCROLLING BOXES “čo ponúkame” ---------- */
+
+.co-ponukame-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.co-ponukame {
+    display: flex;
+    padding-left: 100%;
+    animation: moveLine 25s linear infinite;
+    margin-top: 25px;
+}
+
+.square-even {
+    background: #9f9809;
+}
+
+.square-odd {
+    background: #ffffff;
+}
+
+.square-odd,
+.square-even {
+    flex: 0 0 auto;
+    width: 350px;
+    height: 200px;
+    margin-left: 25px;
+    border-radius: 30px;
+    color: #070303;
+}
+
+@keyframes moveLine {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-400%); }
+}
+
+.sq-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 20px;
+}
+
+.sq-text {
+    font-size: 1rem;
+    margin: 0 20px;
+}
+
+/* OBRAZOKY SPULU A OTVARAJUCE HODINY*/
+
+.otvaracie-hodiny-container {
+    display: flex;
+    gap: 40px;               /* medzera medzi stĺpcami */
+    align-items: flex-start;
+    flex-wrap: wrap;          /* aby sa na mobiloch stĺpce zoradili pod seba */
+    margin: 60px 0;
+}
+
+.otvaracie-hodiny-image {
+    flex: 1 1 400px;         /* min. šírka 400px, flexibilné */
+}
+
+.otvaracie-hodiny-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.otvaracie-hodiny-text {
+    flex: 1 1 400px;
+    color: white;
+}
+
+.otvaracie-hodiny-text h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #9f9809;
+}
+
+.otvaracie-hodiny-text p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+.otvaracie-hodiny-text .small-text {
+    font-size: 1rem;
+    margin-top: 15px;
+    color: #cccccc;
+}
+
+/* MAPA */
+
+.map {
+    width: 100%;
+    display: flex;
+    justify-content: center;  /* horizontálne centrovanie */
+    align-items: center;       /* vertikálne centrovanie (ak má kontajner výšku) */
+    margin: 40px 0;            /* voliteľné odsadenie hore/dole */
+}
