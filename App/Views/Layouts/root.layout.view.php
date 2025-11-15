@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Font Awesome Free -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/root.css">
+    <link rel="stylesheet" href="<?= $link->asset('/css/root.css') ?>">
     <script src="<?= $link->asset('js/script.js') ?>"></script>
 </head>
 <body>
@@ -33,9 +33,9 @@
                     BRONZE GYM
                 </a>
                 <a class="nav-link" href="<?= $link->url("home.coaches") ?>">Tréneri</a>
-                <a class="nav-link" href="/../App/Views/pernametky.view.php">Pernamentky</a>
-                <a class="nav-link" href="/../App/Views/skupinove-hodiny.view.php">Skupinové hodiny</a>
-                <a class="nav-link" href="/../App/Views/galeria.view.php">Galéria</a>
+                <a class="nav-link" href="<?= $link->url('home.permits') ?>">Pernamentky</a>
+                <a class="nav-link" href="<?= $link->url('home.group-classes') ?>">Skupinové hodiny</a>
+                <a class="nav-link" href="<?= $link->url('home.galery') ?>">Galéria</a>
             </div>
 
         </div>
