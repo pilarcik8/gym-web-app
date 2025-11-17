@@ -25,7 +25,7 @@ $view->setLayout('root');
                 <div class="form-label-group mb-3">
                     <input name="password" type="password" id="password" class="form-control" placeholder="Heslo" required>
                 </div>
-                <button class="btn btn-primary button-green" type="submit" name="submit">Log in</button>
+                <button class="btn btn-primary button-green" type="submit" name="submit">LOG IN</button>
             </form>
         </div>
     </div>

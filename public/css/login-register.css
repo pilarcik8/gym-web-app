@@ -1,11 +1,16 @@
 /* Celá sekcia s pozadím */
 .login-hero {
-    width: 100%;
-    height: 100%;
-    background: url('/images/main-background.jpg') center/cover no-repeat;
+    background-image: url('/images/main-background.jpg');
+    background-color: #cccccc; /* Used if the image is unavailable */
+    height: 600px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+
     display: flex;
     padding-left: 10%;
     place-items: center; /* rovno zakliknuty form */
+    margin-top: 60px;
 }
 
 /* Nadpis PRIHLÁSENIE */
@@ -13,7 +18,6 @@
     font-size: 50px;
     font-weight: 700;
     width: 350px;
-    margin-bottom: 30px;
     color: white;
     height: auto;
 }
@@ -39,14 +43,4 @@
 
 .button-green:hover {
     background: #0c8d0c;
-}
-
-/* Aby login box nebol úplne nalepený hore */
-.row {
-    margin-top: 120px;
-}
-
-/* Skryť default card border/shadow */
-.card {
-    box-shadow: none !important;
 }

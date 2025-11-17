@@ -46,7 +46,7 @@
         <!-- Sign In / Log In  -->
         <div class="d-flex gap-2 align-items-stretch" id="login-signin-container">
 
-            <a href="/" class="d-flex align-items-center gap-1 text-dark text-decoration-none p-2" style="min-width:90px; justify-content:center;">
+            <a href="<?= $link->url("auth.register") ?>" class="d-flex align-items-center gap-1 text-dark text-decoration-none p-2" style="min-width:90px; justify-content:center;">
                 <i id="user-icon" class="fa-solid fa-user"></i>
                 <span class="nav-link">Sign In</span>
             </a>
