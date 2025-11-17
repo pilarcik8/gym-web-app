@@ -54,4 +54,19 @@ class HomeController extends BaseController
     {
         return $this->html();
     }
+
+    public function gallery(Request $request): Response
+    {
+        return $this->html();
+    }
+
+    public function group_classes(Request $request): Response
+    {
+        return $this->html();
+    }
+
+    public function permits(Request $request): Response
+    {
+        return $this->html();
+    }
 }

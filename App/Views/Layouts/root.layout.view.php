@@ -37,7 +37,7 @@
                 </a>
                 <a class="nav-link" href="<?= $link->url("home.coaches") ?>">Tréneri</a>
                 <a class="nav-link" href="<?= $link->url('home.permits') ?>">Pernamentky</a>
-                <a class="nav-link" href="<?= $link->url('home.group-classes') ?>">Skupinové hodiny</a>
+                <a class="nav-link" href="<?= $link->url('home.group_classes') ?>">Skupinové hodiny</a>
                 <a class="nav-link" href="<?= $link->url('home.gallery') ?>">Galéria</a>
             </div>
 
