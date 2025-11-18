@@ -1,16 +1,20 @@
 /* Celá sekcia s pozadím */
+body {
+    background-color: black;
+}
+
 .login-hero {
     background-image: url('/images/main-background.jpg');
-    background-color: #cccccc;
     min-height: 600px;
-    background-position: center;
+    background-position: top left;
     background-repeat: no-repeat;
     background-size: cover;
 
+    /* Text a Form */
     display: flex;
-    padding-left: 10%;
     place-items: center; /* rovno zakliknuty form */
     margin-top: 60px;
+    padding-left: 10%;
 }
 
 /* Nadpis PRIHLÁSENIE */
