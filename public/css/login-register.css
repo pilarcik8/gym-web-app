@@ -4,26 +4,25 @@ body {
 }
 
 .login-hero {
+    /* Pozadie */
     background-image: url('/images/main-background.jpg');
-    min-height: 600px;
     background-position: top left;
     background-repeat: no-repeat;
     background-size: cover;
+    height: 30rem;
 
     /* Text a Form */
     display: flex;
     place-items: center; /* rovno zakliknuty form */
-    margin-top: 60px;
+    margin-top: 2.5rem;
     padding-left: 10%;
 }
 
 /* Nadpis PRIHLÁSENIE */
-#title {
-    font-size: 50px;
+h1 {
+    font-size: 2rem;
     font-weight: 700;
-    width: 350px;
     color: white;
-    height: auto;
 }
 
 /* Login karta */
@@ -33,14 +32,13 @@ body {
 
 /* Inputy */
 .card-signin .form-control {
-    height: 45px;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 /* Log in tlačidlo */
 .button-green {
     background: #0ea30e;
-    font-size: 16px;
+    font-size: 0.7rem;
     font-weight: bold;
     width: 50%;
 }

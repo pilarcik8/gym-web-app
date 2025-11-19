@@ -18,13 +18,13 @@ $view->setLayout('root');
     </div>
 </div>
 
-<div class="sluzby-wrapper">
-    <div class="sluzby-riadok-1">NAŠE SLUŽBY</div>
-    <div class="sluzby-riadok-2">ČO SILVER GYM PONÚKA?</div>
+<div class="services-text-wrapper">
+    <div class="services-text-line-1">NAŠE SLUŽBY</div>
+    <div class="services-text-line-2 ">ČO SILVER GYM PONÚKA?</div>
 </div>
 
-<div class="co-ponukame-wrapper">
-    <div class="co-ponukame">
+<div class="moving-squares-wrapper">
+    <div class="moving-squares">
         <div class="square-odd">
             <h2 class="sq-title">Silový tréning</h2>
             <p class="sq-text">Profesionálne vybavenie na naberanie sily a budovanie svalov.</p>
@@ -52,8 +52,8 @@ $view->setLayout('root');
     </div>
 </div>
 
-<div class="otvaracie-hodiny-container">
-    <div class="otvaracie-hodiny-image">
+<div class="opening-hours-container">
+    <div class="opening-hours-image">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <!-- Čiary -->
             <div class="carousel-indicators">
@@ -84,7 +84,7 @@ $view->setLayout('root');
             </button>
         </div>
     </div>
-    <div class="otvaracie-hodiny-text">
+    <div class="opening-hours-text">
         <h2>Otváracie hodiny:</h2>
         <p>Pondelok: 06:00 – 22:00</p>
         <p>Utorok: 06:00 – 22:00</p>

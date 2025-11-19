@@ -23,41 +23,40 @@
 
 /* ---------- TEXT NAD “čo ponúkame” ---------- */
 
-.sluzby-wrapper {
+.services-text-wrapper{
     text-align: left;
-    margin-top: 45px;
+    margin-top: 1.7rem;
+    font-size: 1rem;
 }
 
-.sluzby-riadok-1 {
-    font-size: 1rem;
+.services-text-line-1 {
     font-style: italic;
     font-weight: 1000;
     color: #9f9809;
     display: inline-block;      /* aby rotácia fungovala správne */
     transform: rotate(-25deg);
-    margin-bottom: 35px;        /* odstup od druhého riadku */
 }
 
-.sluzby-riadok-2 {
+.services-text-line-2 {
+    margin-top: 1.1rem;
     margin-left: 1rem;
-    font-size: 1rem;
     font-weight: 500;
     color: white;
 }
 
 /* ---------- SCROLLING BOXES “čo ponúkame” ---------- */
 
-.co-ponukame-wrapper {
-    width: 100%;
+.moving-squares-wrapper {
     overflow: hidden;
     position: relative;
 }
 
-.co-ponukame {
+.moving-squares {
     display: flex;
-    padding-left: 100%;
+    padding-left: 100%; /* začína mimo obrazovky vpravo */
     animation: moveLine 25s linear infinite;
-    margin-top: 25px;
+    margin-top: 1rem;
+    gap: 2rem;
 }
 
 .square-even {
@@ -72,10 +71,8 @@
 .square-odd,
 .square-even {
     flex: 0 0 auto;
-    width: 350px;
-    height: 200px;
-    margin-left: 25px;
-    border-radius: 30px;
+    width: 15rem;
+    border-radius: 1rem;
     color: #070303;
 }
 
@@ -87,53 +84,55 @@
 .sq-title {
     font-size: 1.5rem;
     font-weight: 700;
-    margin: 20px;
+    margin: 0.5rem;
 }
 
 .sq-text {
     font-size: 1rem;
-    margin: 0 20px;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
 }
 
 /* OBRAZOKY SPULU A OTVARAJUCE HODINY*/
 
-.otvaracie-hodiny-container {
+.opening-hours-container {
     display: flex;
-    gap: 40px;               /* medzera medzi stĺpcami */
-    align-items: flex-start;
+    gap: 3rem;               /* medzera medzi obr a text */
     flex-wrap: wrap;          /* aby sa na mobiloch stĺpce zoradili pod seba */
-    margin: 60px 0;
+    margin-top: 2rem;
+
+    align-items: center;
 }
 
-.otvaracie-hodiny-image {
+.opening-hours-image {
     flex: 1 1 400px;         /* min. šírka 400px, flexibilné */
 }
 
-.otvaracie-hodiny-image img {
+.opening-hours img {
     width: 100%;
     height: auto;
-    border-radius: 15px;
 }
 
-.otvaracie-hodiny-text {
+.opening-hours-text {
     flex: 1 1 400px;
     color: white;
 }
 
-.otvaracie-hodiny-text h2 {
+.opening-hours-text h2 {
+    font-weight: bold;
     font-size: 2rem;
-    margin-bottom: 20px;
     color: #9f9809;
 }
 
-.otvaracie-hodiny-text p {
-    margin: 5px 0;
+.opening-hours-text p {
     font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
 }
 
-.otvaracie-hodiny-text .small-text {
+.opening-hours-text .small-text {
     font-size: 1rem;
-    margin-top: 15px;
+    margin-top: 0.5rem;
     color: #cccccc;
 }
 
@@ -152,5 +151,6 @@
     display: flex;
     justify-content: center;  /* horizontálne centrovanie */
     align-items: center;       /* vertikálne centrovanie (ak má kontajner výšku) */
-    margin: 40px 0;            /* voliteľné odsadenie hore/dole */
+    margin-bottom: 2rem;
+    margin-top: 2rem;
 }

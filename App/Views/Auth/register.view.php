@@ -13,7 +13,7 @@ $view->setLayout('root');
 <div class="login-hero">
     <div class="row">
         <div class="card card-signin my-5">
-            <h1 id="title">REGISTRÁCIA</h1>
+            <h1>REGISTRÁCIA</h1>
             <div class="text-center text-danger mb-3">
                 <?= @$message ?>
             </div>
