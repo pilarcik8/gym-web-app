@@ -21,20 +21,18 @@ $view->setLayout('root');
 </div>
 
 <!-- Treneri -->
+<div class="rows">
 <section class="row-section">
-    <div>
-        <button class="btn btn-primary">Rezervuj si Trénera <span class="button-text-yellow">MAREK</span></button>
-    </div>
     <div class="slashed-rectangle-right">
         <div class="slashed-rectangle-content">
             <div>
-            <h5 class="couach-name">MAREK</h5>
-            <p class="couach-short-info">SILOVÝ TRÉNING A KONDÍCIA</p>
+            <h5 class="coach-name">MAREK</h5>
+            <p class="coach-short-info">SILOVÝ TRÉNING A KONDÍCIA</p>
             Marek je certifikovaný tréner so zameraním na silový a funkčný tréning. Pomôže vám vybudovať svaly, zlepšiť výkon a naučí vás správnu techniku cvičenia.
             </div>
         </div>
+        <button class="btn btn-primary">Rezervuj</button>
     </div>
-
     <img src="<?= $link->asset('/images/coach-1.png') ?>" alt="trener1" class="section-image-right">
 </section>
 
@@ -44,32 +42,27 @@ $view->setLayout('root');
     <div class="slashed-rectangle-left">
         <div class="slashed-rectangle-content">
             <div>
-                <h5 class="couach-name">LUCIA</h5>
-                <p class="couach-short-info">FITENESS A ZDRAVÝ ŽIVOTNÝ ŠTÝL</p>
+                <h5 class="coach-name">LUCIA</h5>
+                <p class="coach-short-info">FITENESS A ZDRAVÝ ŽIVOTNÝ ŠTÝL</p>
                 Lucia je energická trénerka, ktorá kombinuje silový tréning s prvkami mobility a jógy. Pomôže vám cítiť sa lepšie, silnejšie a sebavedomejšie každý deň.
             </div>
         </div>
-    </div>
-
-    <div>
-        <button class="btn btn-primary">Rezervuj si Trénera <span class="button-text-yellow">LUCIA</span></button>
+        <button class="btn btn-primary">Rezervuj</button>
     </div>
 </section>
 
-<section class="row-section">
-    <div>
-        <button class="btn btn-primary">Rezervuj si Trénera <span class="button-text-yellow">PETER</span></button>
-    </div>
 
+<section class="row-section">
     <div class="slashed-rectangle-right">
         <div class="slashed-rectangle-content">
             <div>
-                <h5 class="couach-name">MARTIN</h5>
-                <p class="couach-short-info">SILOVÝ TRÉNING A KONDÍCIA</p>
+                <h5 class="coach-name">MARTIN</h5>
+                <p class="coach-short-info">SILOVÝ TRÉNING A KONDÍCIA</p>
                 Martin sa zameriava na rozvoj sily, správnu techniku a dlhodobú kondíciu. Jeho tréningy sú dynamické, premyslené a prispôsobené úrovni každého klienta.
             </div>
         </div>
+        <button class="btn btn-primary">Rezervuj</button>
     </div>
-
     <img src="<?= $link->asset('/images/coach-3.png') ?>" alt="trener3" class="section-image-right">
 </section>
+</div>
