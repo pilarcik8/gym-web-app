@@ -21,9 +21,7 @@ $view->setLayout('root');
 </div>
 
 <!-- Treneri -->
-<div class="rows">
-<section class="row-section">
-    <div class="slashed-rectangle-right">
+    <div class="slashed-rectangle">
         <div class="slashed-rectangle-content">
             <div>
             <h5 class="coach-name">MAREK</h5>
@@ -33,13 +31,8 @@ $view->setLayout('root');
         </div>
         <button class="btn btn-primary">Rezervuj</button>
     </div>
-    <img src="<?= $link->asset('/images/coach-1.png') ?>" alt="trener1" class="section-image-right">
-</section>
 
-<section class="row-section">
-    <img src="<?= $link->asset('/images/coach-2.png') ?>" alt="trener2" class="section-image-left">
-
-    <div class="slashed-rectangle-left">
+    <div class="slashed-rectangle">
         <div class="slashed-rectangle-content">
             <div>
                 <h5 class="coach-name">LUCIA</h5>
@@ -49,11 +42,9 @@ $view->setLayout('root');
         </div>
         <button class="btn btn-primary">Rezervuj</button>
     </div>
-</section>
 
 
-<section class="row-section">
-    <div class="slashed-rectangle-right">
+    <div class="slashed-rectangle">
         <div class="slashed-rectangle-content">
             <div>
                 <h5 class="coach-name">MARTIN</h5>
@@ -63,6 +54,3 @@ $view->setLayout('root');
         </div>
         <button class="btn btn-primary">Rezervuj</button>
     </div>
-    <img src="<?= $link->asset('/images/coach-3.png') ?>" alt="trener3" class="section-image-right">
-</section>
-</div>

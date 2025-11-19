@@ -35,13 +35,6 @@
 }
 
 /* TRENERY */
-.row-section {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
 /* Tlacidlo */
 .btn-primary {
     background: black;
@@ -52,14 +45,6 @@
 .btn-primary:hover {
     background: #9f9809;
     border: 2px solid white;
-    .button-text-yellow {
-        color: black;
-    }
-}
-
-.button-text-yellow {
-    color: #9f9809;
-    font-weight: bold;
 }
 
 /* Text */
@@ -72,40 +57,17 @@
     color: #302e2e;;
 }
 
-/* Obrázok */
-.section-image-right, .section-image-left {
-    z-index: 1;
-    border: 0.01rem solid white;
-    height: 10.4rem;
-    position: relative;
-}
-
-.section-image-left {
-    margin-right: 43rem;
-}
-
-.section-image-right {
-    margin-left: 43rem;
-}
-
 /* --- KOSODĹŽNIK --- */
-.slashed-rectangle-right, .slashed-rectangle-left {
-    width: 30rem;
+.slashed-rectangle {
+    width: 40rem;
     height: 10.4rem;
     background: #9f9809;
     transform: skewX(-15deg);
     padding: 1.5rem;
-    position: absolute;  /* umožní prekrytie obrázka */
-    z-index: 3;          /* nad obrázkom */
+    position: relative;
     border: 0.05rem solid white;
-}
-
-.slashed-rectangle-right {
     left: calc(50% - 350px);
-}
-
-.slashed-rectangle-left {
-    right: calc(50% - 350px);
+    margin-bottom: 2rem;
 }
 
 .slashed-rectangle-content {
@@ -113,8 +75,4 @@
     color: white;
     font-size: 0.8rem;
     font-family: sans-serif;
-}
-
-.rows {
-    align-content: center;
 }
