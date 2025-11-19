@@ -9,7 +9,6 @@ $view->setLayout('root');
     <link rel="stylesheet" href="<?= $link->asset('/css/coaches.css') ?>">
 </head>
 
-
 <!-- Hero -->
 <div class="hero-coaches-wrapper">
     <img src="<?= $link->asset('/images/couches-hero.png') ?>" alt="Trener joga" class="hero-img">
@@ -21,17 +20,21 @@ $view->setLayout('root');
 </div>
 
 <!-- Treneri -->
-    <div class="slashed-rectangle">
-        <div class="slashed-rectangle-content">
-            <div>
-            <h5 class="coach-name">MAREK</h5>
-            <p class="coach-short-info">SILOVÝ TRÉNING A KONDÍCIA</p>
-            Marek je certifikovaný tréner so zameraním na silový a funkčný tréning. Pomôže vám vybudovať svaly, zlepšiť výkon a naučí vás správnu techniku cvičenia.
+    <div class="container">
+        <div class="slashed-rectangle">
+            <div class="slashed-rectangle-content">
+                <div>
+                    <h5 class="coach-name">MAREK</h5>
+                    <p class="coach-short-info">SILOVÝ TRÉNING A KONDÍCIA</p>
+                    Marek je certifikovaný tréner so zameraním na silový a funkčný tréning. Pomôže vám vybudovať svaly, zlepšiť výkon a naučí vás správnu techniku cvičenia.
+                </div>
             </div>
+            <button class="btn btn-primary">Rezervuj</button>
         </div>
-        <button class="btn btn-primary">Rezervuj</button>
+        <img class="coach-foto-left" src="<?= $link->asset('/images/coach-1.png') ?>" alt="trener1">
     </div>
 
+    <div class="container">
     <div class="slashed-rectangle">
         <div class="slashed-rectangle-content">
             <div>
@@ -42,8 +45,10 @@ $view->setLayout('root');
         </div>
         <button class="btn btn-primary">Rezervuj</button>
     </div>
+        <img class="coach-foto-left" src="<?= $link->asset('/images/coach-2.png') ?>" alt="trener2">
+    </div>
 
-
+    <div class="container">
     <div class="slashed-rectangle">
         <div class="slashed-rectangle-content">
             <div>
@@ -53,4 +58,6 @@ $view->setLayout('root');
             </div>
         </div>
         <button class="btn btn-primary">Rezervuj</button>
+    </div>
+        <img class="coach-foto-left" src="<?= $link->asset('/images/coach-3.png') ?>" alt="trener3">
     </div>
