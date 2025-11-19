@@ -9,7 +9,6 @@ $view->setLayout('root');
     <link rel="stylesheet" href="<?= $link->asset('/css/coaches.css') ?>">
 </head>
 
-
 <!-- Hero -->
 <div class="hero-coaches-wrapper">
     <img src="<?= $link->asset('/images/couches-hero.png') ?>" alt="Trener joga" class="hero-img">
@@ -21,25 +20,22 @@ $view->setLayout('root');
 </div>
 
 <!-- Treneri -->
-<div class="rows">
-<section class="row-section">
-    <div class="slashed-rectangle-right">
-        <div class="slashed-rectangle-content">
-            <div>
-            <h5 class="coach-name">MAREK</h5>
-            <p class="coach-short-info">SILOVÝ TRÉNING A KONDÍCIA</p>
-            Marek je certifikovaný tréner so zameraním na silový a funkčný tréning. Pomôže vám vybudovať svaly, zlepšiť výkon a naučí vás správnu techniku cvičenia.
+    <div class="container">
+        <div class="slashed-rectangle">
+            <div class="slashed-rectangle-content">
+                <div>
+                    <h5 class="coach-name">MAREK</h5>
+                    <p class="coach-short-info">SILOVÝ TRÉNING A KONDÍCIA</p>
+                    Marek je certifikovaný tréner so zameraním na silový a funkčný tréning. Pomôže vám vybudovať svaly, zlepšiť výkon a naučí vás správnu techniku cvičenia.
+                </div>
             </div>
+            <button class="btn btn-primary">Rezervuj</button>
         </div>
-        <button class="btn btn-primary">Rezervuj</button>
+        <img class="coach-foto-left" src="<?= $link->asset('/images/coach-1.png') ?>" alt="trener1">
     </div>
-    <img src="<?= $link->asset('/images/coach-1.png') ?>" alt="trener1" class="section-image-right">
-</section>
 
-<section class="row-section">
-    <img src="<?= $link->asset('/images/coach-2.png') ?>" alt="trener2" class="section-image-left">
-
-    <div class="slashed-rectangle-left">
+    <div class="container">
+    <div class="slashed-rectangle">
         <div class="slashed-rectangle-content">
             <div>
                 <h5 class="coach-name">LUCIA</h5>
@@ -49,11 +45,11 @@ $view->setLayout('root');
         </div>
         <button class="btn btn-primary">Rezervuj</button>
     </div>
-</section>
+        <img class="coach-foto-left" src="<?= $link->asset('/images/coach-2.png') ?>" alt="trener2">
+    </div>
 
-
-<section class="row-section">
-    <div class="slashed-rectangle-right">
+    <div class="container">
+    <div class="slashed-rectangle">
         <div class="slashed-rectangle-content">
             <div>
                 <h5 class="coach-name">MARTIN</h5>
@@ -63,6 +59,5 @@ $view->setLayout('root');
         </div>
         <button class="btn btn-primary">Rezervuj</button>
     </div>
-    <img src="<?= $link->asset('/images/coach-3.png') ?>" alt="trener3" class="section-image-right">
-</section>
-</div>
+        <img class="coach-foto-left" src="<?= $link->asset('/images/coach-3.png') ?>" alt="trener3">
+    </div>

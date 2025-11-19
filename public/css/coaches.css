@@ -26,22 +26,7 @@
     margin-bottom: 0.5rem;
 }
 
-/* Skryť obrázok na mobiloch */
-@media (max-width: 630px) {
-    .hero-img {
-        height: 14rem;
-        visibility: hidden;
-    }
-}
-
 /* TRENERY */
-.row-section {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
 /* Tlacidlo */
 .btn-primary {
     background: black;
@@ -52,14 +37,6 @@
 .btn-primary:hover {
     background: #9f9809;
     border: 2px solid white;
-    .button-text-yellow {
-        color: black;
-    }
-}
-
-.button-text-yellow {
-    color: #9f9809;
-    font-weight: bold;
 }
 
 /* Text */
@@ -72,40 +49,24 @@
     color: #302e2e;;
 }
 
-/* Obrázok */
-.section-image-right, .section-image-left {
-    z-index: 1;
-    border: 0.01rem solid white;
-    height: 10.4rem;
-    position: relative;
-}
-
-.section-image-left {
-    margin-right: 43rem;
-}
-
-.section-image-right {
-    margin-left: 43rem;
-}
-
 /* --- KOSODĹŽNIK --- */
-.slashed-rectangle-right, .slashed-rectangle-left {
-    width: 30rem;
+.coach-foto {
+    border: white solid 0.01rem;
+    margin-right: 1.4rem;
+    width: 10rem;
+    height: auto;
+}
+
+.slashed-rectangle {
+    width: 40rem;
     height: 10.4rem;
     background: #9f9809;
     transform: skewX(-15deg);
     padding: 1.5rem;
-    position: absolute;  /* umožní prekrytie obrázka */
-    z-index: 3;          /* nad obrázkom */
     border: 0.05rem solid white;
-}
-
-.slashed-rectangle-right {
     left: calc(50% - 350px);
-}
-
-.slashed-rectangle-left {
-    right: calc(50% - 350px);
+    margin-bottom: 2rem;
+    z-index: 1;
 }
 
 .slashed-rectangle-content {
@@ -115,6 +76,40 @@
     font-family: sans-serif;
 }
 
-.rows {
-    align-content: center;
+.coach-foto-left {
+    z-index: 0;
+    position: absolute;
+    border: white solid 0.01rem;
+    right: 3rem;
+    height: 10.4rem;
+    width: auto;
+}
+
+.container {
+    display: flex;
+}
+
+@media (max-width: 1450px) {
+    .coach-foto-left  {
+        visibility: hidden;
+    }
+}
+
+/* mobil */
+@media (max-width: 630px) {
+    .hero-img {
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .hero-text-container {
+        position: relative;
+        margin-top: 2.8rem;
+        top:0;
+        left: 0;
+        height: auto;
+        width: 40rem;
+        background: #1c1c17;
+        border: none;
+    }
 }
