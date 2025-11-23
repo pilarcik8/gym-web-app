@@ -92,6 +92,7 @@ class DummyAuthenticator implements IAuthenticator
 
         // Check both 'account' and legacy 'user' session keys
         $sessionValue = $this->session->get('account');
+        //TODO: remove legacy support later
         if ($sessionValue === null) {
             $sessionValue = $this->session->get('user');
         }
@@ -129,6 +130,7 @@ class DummyAuthenticator implements IAuthenticator
      */
     public function __get(string $name): mixed
     {
+        //TODO: remove legacy support later
         if ($name === 'user' || $name === 'account') {
             return $this->getUser();
         }

@@ -2,6 +2,8 @@
 /** @var string $contentHTML */
 /** @var \Framework\Core\IAuthenticator $auth */
 /** @var \Framework\Support\LinkGenerator $link */
+/** @var \Framework\Auth\AppUser $user */
+
 ?>
 
 <!doctype html>
