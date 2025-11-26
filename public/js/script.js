@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const messageBox = document.querySelector(".text-center.text-danger");
 
     form.addEventListener("submit", function (event) {
-        messageBox.textContent = ""; // vyčisti predošlú hlášku
+        messageBox.textContent = "";
 
         const name = document.getElementById("name").value.trim();
         const lastName = document.getElementById("last-name").value.trim();
@@ -15,6 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!name || !lastName || !email || !pass || !passConfirm) {
             event.preventDefault();
             messageBox.textContent = "Vyplň všetky polia!";
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            event.preventDefault();
+            messageBox.textContent = "Nesprávny email formát!";
             return;
         }
 

@@ -31,8 +31,8 @@
     <div class="container-fluid d-flex justify-content-between">
 
         <a id="home-icon-name" href="<?= $link->url("home.index") ?>"
-           class="navbar-brand d-flex align-items-center text-dark fw-bold">
-            <i class="fa-solid fa-dumbbell fa-lg gap-1"></i>
+           class="navbar-brand d-flex align-items-center text-dark fw-bold gap-1">
+            <i class="fa-solid fa-dumbbell fa-lg"></i>
             BRONZE GYM
         </a>
 

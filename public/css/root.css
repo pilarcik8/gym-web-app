@@ -60,11 +60,6 @@ body {
     }
 }
 
-#mobileNav {
-    z-index: 9999;
-    backdrop-filter: none !important;
-}
-
 /* ---------- FOOTER ---------- */
 
 #footer {
