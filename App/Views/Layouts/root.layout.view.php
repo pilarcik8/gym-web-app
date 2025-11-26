@@ -72,7 +72,7 @@
 </nav>
 
 <!-- CONTENT -->
-<div class="container-fluid mt-3">
+<div>
     <div class="web-content">
         <?= $contentHTML ?>
     </div>

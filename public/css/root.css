@@ -55,10 +55,6 @@ body {
         border-left: none;
     }
 
-    .navbar-nav {
-        padding: 0;
-    }
-
     .navbar-nav .nav-link {
         font-size: 1rem;
     }
