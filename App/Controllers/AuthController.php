@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Configuration;
+use App\Models\Account;
 use Exception;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
@@ -64,16 +65,63 @@ class AuthController extends BaseController
      * tokens or session data associated with the user.
      *
      * @return ViewResponse The response object that renders the logout view.
+     * @throws Exception
      */
     public function logout(Request $request): Response
     {
         $this->app->getAuthenticator()->logout();
-        return $this->html();
+        return $this->redirect($this->url("home.index"));
     }
+
+    /**
+     * Logs out the current user.
+     *
+     * This action terminates the user's session and redirects them to a view. It effectively clears any authentication
+     * tokens or session data associated with the user.
+     *
+     * @return ViewResponse The response object that renders the logout view.
+     * @throws Exception
+     */
 
     public function register(Request $request): Response
     {
-        //TODO THIS
-        return $this->html();
+        $message = null;
+        if ($request->hasValue('register')) {
+            $email = trim($request->value('email'));
+            $first_name = trim($request->value('first_name'));
+            $last_name = trim($request->value('last_name'));
+            $password = $request->value('password');
+            $password2 = $request->value('password2');
+
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $message = "Invalid email format";
+                return $this->html(compact("message"));
+            }
+            if (strlen($password) < 6) {
+                $message = "Password must have at least 6 characters";
+                return $this->html(compact("message"));
+            }
+            if ($password !== $password2) {
+                $message = "Passwords do not match";
+                return $this->html(compact("message"));
+            }
+
+            $existingUsers = Account::getCount('`email` = ?', [$email]);
+            if ($existingUsers > 0) {
+                $message = "User with this email already exists";
+                return $this->html(compact("message"));
+            }
+            $hash = password_hash($password, PASSWORD_DEFAULT);
+
+            $userModel = new Account();
+            $userModel->setEmail($email);
+            $userModel->setPassword($hash);
+            $userModel->setFirstName($first_name);
+            $userModel->setLastName($last_name);
+
+            $userModel->save();
+            return $this->redirect($this->url("auth.login"));
+        }
+        return $this->html(compact("message"));
     }
 }
