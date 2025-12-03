@@ -2,7 +2,7 @@
 /** @var array|\Traversable $accounts */
 /** @var \Framework\Auth\AppUser $user */
 /** @var \Framework\Support\LinkGenerator $link */
-/** @var array|null $flash */
+/** @var string|null $message */
 
 use App\Models\Account;
 
@@ -46,6 +46,9 @@ function acc_field($acc, string $field)
     <div class="row">
         <div class="col">
             <h4>Accounts</h4>
+            <div class="text-center text-danger mb-3">
+                <?= @$message ?>
+            </div>
             <div id="div-table">
                 <table class="table table-sm table-striped mb-0">
                     <thead>
@@ -86,23 +89,42 @@ function acc_field($acc, string $field)
 
             <hr>
 
-            <h5>Change user role</h5>
-            <form method="post"  action="<?= $link->url("changeRole") ?>">
-                <div class="mb-2">
-                    <label for="id">User ID</label>
-                    <input id="id" name="id" type="number" class="form-control" required />
+            <h5>Change role</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <form method="post" action="<?= $link->url("changeRole") ?>">
+                        <div class="mb-2">
+                            <label for="id-change">User ID</label>
+                            <input id="id-change" name="id" type="number" class="form-control" required />
+                        </div>
+                        <div class="mb-2">
+                            <label for="role">Role</label>
+                            <select id="role" name="role" class="form-control" required>
+                                <option value="customer">customer</option>
+                                <option value="admin">admin</option>
+                                <option value="reception">reception</option>
+                                <option value="trainer">trainer</option>
+                            </select>
+                        </div>
+                        <button type="submit" name="changeRole" class="btn btn-primary">Change role</button>
+                    </form>
                 </div>
-                <div class="mb-2">
-                    <label for="role">Role</label>
-                    <select id="role" name="role" class="form-control" required>
-                        <option value="customer">customer</option>
-                        <option value="admin">admin</option>
-                        <option value="reception">reception</option>
-                        <option value="trainer">trainer</option>
-                    </select>
+
+                <div class="col-md-6">
+                    <h5>Delete account</h5>
+                    <form method="post" action="<?= $link->url("deleteUser") ?>" onsubmit="return confirm('Are you sure you want to delete this user? This action cannot be undone.');">
+                        <div class="mb-2">
+                            <label for="id-delete">User ID</label>
+                            <input id="id-delete" name="id" type="number" class="form-control" required />
+                        </div>
+                        <div class="mb-2">
+                            <div>
+                                <button type="submit" name="deleteUser" class="btn btn-danger">Delete user</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <button type="submit" name="changeRole" class="btn btn-primary">Change role</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>

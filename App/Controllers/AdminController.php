@@ -7,8 +7,6 @@ use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
 
-/** @var array|null $flash */
-
 /**
  * Class AdminController
  *
@@ -50,6 +48,7 @@ class AdminController extends BaseController
      */
     public function changeRole(Request $request): Response
     {
+        $message = null;
         //if ($this->user->getRole() !== 'admin')
         if ($request->hasValue('changeRole')) {
             $id = (int)$request->post('id');
@@ -57,15 +56,56 @@ class AdminController extends BaseController
 
             $account = Account::getOne($id);
             if ($account) {
+                if ($account->getRole() === "admin") {
+                    $adminCount = Account::getCount('`role` = ?', ["admin"]);
+                    if ($adminCount <= 1 && $role !== "admin") {
+                        $message = "Nie je možné zmeniť rolu posledného administrátora.";
+                        return $this->redirect($this->url("admin.index"));
+                    }
+                }
                 $account->setRole($role);
                 $account->save();
 
-                // 7) Flash message
-                $flash = "Role používateľa #$id bola zmenená na $role.";
+                $message = "Role používateľa #$id bola zmenená na $role.";
             } else {
-                $flash = "Používateľ s ID #$id nebol nájdený.";
+                $message = "Používateľ s ID #$id nebol nájdený.";
             }
         }
-        return $this->html();
+        return $this->redirect($this->url("admin.index"), compact("message"));
+    }
+
+    public function deleteUser(Request $request): Response
+    {
+        $message = null;
+
+        if ($request->hasValue('deleteUser')) {
+            $id = (int)$request->post('id');
+
+            $account = Account::getOne($id);
+            if (!$account) {
+                $message = "Používateľ s ID #$id nebol nájdený.";
+                return $this->redirect($this->url("admin.index"), compact("message"));
+            }
+
+            // Prevent deleting the currently logged-in user
+            if (method_exists($this->user, 'getId') && (int)$this->user->getId() === $id) {
+                $message = "Nemôžete vymazať svoj vlastný účet.";
+                return $this->redirect($this->url("admin.index"), compact("message"));
+            }
+
+            // Prevent deleting the last admin
+            $role = null;
+            $role = $account->getRole();
+
+            if ($role === 'admin') {
+                $adminCount = Account::getCount('`role` = ?', ["admin"]);
+                if ($adminCount <= 1) {
+                    $message = "Nie je možné vymazať posledného administrátora.";
+                    return $this->redirect($this->url("admin.index"), compact("message"));
+                }
+            }
+            $account->delete();
+        }
+        return $this->redirect($this->url("admin.index"));
     }
 }
