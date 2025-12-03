@@ -3,6 +3,7 @@
 namespace Framework\Auth;
 
 use Framework\Core\IIdentity;
+use App\Models\Account;
 
 /**
  * Class AppUser
@@ -73,5 +74,16 @@ class AppUser
             return $this->identity->$name(...$arguments);
         }
         throw new \BadMethodCallException("Method {$name} does not exist on current identity.");
+    }
+
+    public function isAdmin()
+    {
+        if ($this->identity === null) {
+            return false;
+        }
+        if (method_exists($this->identity, 'isAdmin'))
+            return $this->identity->isAdmin();
+
+        return false;
     }
 }
