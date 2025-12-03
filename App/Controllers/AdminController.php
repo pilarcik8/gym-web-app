@@ -2,9 +2,12 @@
 
 namespace App\Controllers;
 
+use App\Models\Account;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
+
+/** @var array|null $flash */
 
 /**
  * Class AdminController
@@ -39,6 +42,30 @@ class AdminController extends BaseController
      */
     public function index(Request $request): Response
     {
+        return $this->html();
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function changeRole(Request $request): Response
+    {
+        //if ($this->user->getRole() !== 'admin')
+        if ($request->hasValue('changeRole')) {
+            $id = (int)$request->post('id');
+            $role = trim($request->post('role'));
+
+            $account = Account::getOne($id);
+            if ($account) {
+                $account->setRole($role);
+                $account->save();
+
+                // 7) Flash message
+                $flash = "Role používateľa #$id bola zmenená na $role.";
+            } else {
+                $flash = "Používateľ s ID #$id nebol nájdený.";
+            }
+        }
         return $this->html();
     }
 }

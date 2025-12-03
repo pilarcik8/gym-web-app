@@ -8,13 +8,13 @@ USE `vaiicko_db`;
 
 DROP TABLE IF EXISTS `accounts`;
 CREATE TABLE `accounts` (
-                            `id` int(10) unsigned NOT NULL,
-                            `role` ENUM('admin','trainer','customer','reception') NOT NULL,
+                            `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+                            `role` ENUM('admin','trainer','customer','reception') NOT NULL DEFAULT 'customer',
                             `first_name` varchar(20) NOT NULL,
                             `last_name` varchar(20) NOT NULL,
                             `email` varchar(50) NOT NULL,
-                            `password` varchar(30) NOT NULL,
-                            `credit` decimal(10,0) NOT NULL,
+                            `password` VARCHAR(255) NOT NULL,
+                            `credit` DECIMAL(10,2) NOT NULL DEFAULT 0,
                             PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
@@ -68,8 +68,7 @@ CREATE TABLE `trainings` (
 
 INSERT INTO `accounts` (`id`, `role`, `first_name`, `last_name`, `email`, `password`, `credit`)
 VALUES
-    (1, 'admin', 'Jozef', 'Piaček', 'admin@admin.sk', 'admin', 1000),
-    (2, 'trainer', 'Jana', 'Nováková', 'trener@trener.sk', 'trener', 500),
-    (3, 'customer', 'Peter', 'Kováč', 'zakaznik@zakaznik.sk', 'zakaznik', 200),
-    (4, 'reception', 'Lucia', 'Horváthová', 'recepcia@recepcia.sk', 'recepcia', 0);
+    (1, 'admin', 'Jozef', 'Piaček', 'admin@admin.sk', '$2y$10$GRA8D27bvZZw8b85CAwRee9NH5nj4CQA6PDFMc90pN9Wi4VAWq3yq', 0);
 
+ALTER TABLE accounts
+    ADD CONSTRAINT chk_credit_nonnegative CHECK (credit >= 0);

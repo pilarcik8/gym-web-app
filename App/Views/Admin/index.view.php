@@ -8,6 +8,7 @@ use App\Models\Account;
 
 if (!isset($accounts) || !is_iterable($accounts)) {
     $accounts = Account::getAll();
+
 }
 
 /**
@@ -86,7 +87,7 @@ function acc_field($acc, string $field)
             <hr>
 
             <h5>Change user role</h5>
-            <form method="post" action="/admin/role" style="max-width:420px;">
+            <form method="post"  action="<?= $link->url("changeRole") ?>">
                 <div class="mb-2">
                     <label for="id">User ID</label>
                     <input id="id" name="id" type="number" class="form-control" required />
@@ -100,7 +101,7 @@ function acc_field($acc, string $field)
                         <option value="trainer">trainer</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Change role</button>
+                <button type="submit" name="changeRole" class="btn btn-primary">Change role</button>
             </form>
         </div>
     </div>
