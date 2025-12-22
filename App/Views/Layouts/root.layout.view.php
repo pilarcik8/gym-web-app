@@ -9,10 +9,10 @@
 <!doctype html>
 <html lang="sk">
 <head>
-    <title><?= App\Configuration::APP_NAME ?></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bronze Gym - Template</title>
+    <title><?= htmlspecialchars(App\Configuration::APP_NAME ?: 'Bronze Gym') ?></title>
+
     <!-- Boostrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -67,13 +67,18 @@
 
                     <!-- DROPDOWN PRIHLÁSENÉHO POUŽÍVATEĽA -->
                     <div class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle fw-bold d-flex align-items-center gap-1"
+                        <a class="nav-link dropdown-toggle fw-bold d-flex align-items-center gap-2"
                            href="#"
                            role="button"
                            data-bs-toggle="dropdown"
                            aria-expanded="false">
                             <i class="fa-solid fa-user"></i>
-                            <?= $user->getName() ?>
+                            <div class="d-flex flex-column align-items-start" style="line-height:1;">
+                                <span><?= $user->getName() ?></span>
+                                <?php if ($user->getRole() === 'customer'): ?>
+                                    <small class="text-muted">Credit: <?= number_format((float)$user->getCredit(), 2, ',', '') ?> €</small>
+                                <?php endif; ?>
+                            </div>
                         </a>
 
                         <ul class="dropdown-menu">
@@ -85,8 +90,15 @@
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
                             <?php } ?>
-
-                            <!-- TODO: Dalsie linky tu -->
+                            <?php if ($user->getRole() === "customer") { ?>
+                                <li>
+                                    <a class="dropdown-item" href="<?= $link->url("customer.index") ?>">
+                                        <i class="fa-solid fa-id-card"></i> Customer Panel
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                            <?php } ?>
+                            <!-- Additional links can be added here -->
 
                             <li>
                                 <a class="dropdown-item text-danger" href="<?= $link->url("auth.logout") ?>">
@@ -176,7 +188,7 @@
     </div>
 
     <div class="text-center mt-4 small">
-        © <?php echo date("Y"); ?> Bronze Gym — All rights reserved.
+        © <?= date("Y") ?> Bronze Gym — All rights reserved.
     </div>
 </div>
 </body>
