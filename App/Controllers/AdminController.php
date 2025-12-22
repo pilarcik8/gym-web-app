@@ -107,7 +107,11 @@ class AdminController extends BaseController
             $account->delete();
             $_SESSION['flash_message'] = "Používateľ #$id bol vymazaný.";
         }
-
         return $this->redirect($this->url("admin.index"));
+    }
+
+    public function gallery(Request $request): Response
+    {
+        return $this->html();
     }
 }

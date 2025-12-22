@@ -110,11 +110,6 @@ function acc_field($acc, string $field)
                     </tbody>
                 </table>
             </div>
-
-            <hr>
-
-            <!-- Previous standalone forms removed: actions are now per-row in the table -->
-
         </div>
     </div>
 </div>

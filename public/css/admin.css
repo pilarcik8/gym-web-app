@@ -7,13 +7,10 @@ h4 {
 
 #div-table {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     max-height: 360px;
     overflow-y: auto;
     border: 1px solid #ddd;
     padding: 8px;
     border-radius:4px;
-}
-
-form {
-    max-width:20rem;
 }

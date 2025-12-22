@@ -85,7 +85,15 @@
                             <?php if ($user->getRole() === "admin") { ?>
                                 <li>
                                     <a class="dropdown-item" href="<?= $link->url("admin.index") ?>">
-                                        <i class="fa-solid fa-user-shield"></i> Admin Panel
+                                        <i class="fa-solid fa-user-shield"></i>
+                                        Admin Panel
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="<?= $link->url("admin.gallery") ?>">
+                                        <i class="fa-solid fa-images me-1"></i>
+                                        Gallery
                                     </a>
                                 </li>
                                 <li><hr class="dropdown-divider"></li>
