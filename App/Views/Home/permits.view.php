@@ -26,7 +26,7 @@ $view->setLayout('root');
                 <p>Cena za deň: <span>2.14 € / deň</span></p>
             </div>
 
-            <button class="btn btn-primary button-green" type="submit" name="submit">Kúpiť</button>
+            <button class="button-green btn btn-primary" type="submit" name="submit">Kúpiť</button>
         </div>
 
         <div class="rectengle">
@@ -40,7 +40,7 @@ $view->setLayout('root');
                 <p>Cena za deň: <span>1.50 € / deň</span></p>
             </div>
 
-            <button class="btn btn-primary button-green" type="submit" name="submit">Kúpiť</button>
+            <button class="button-green btn btn-primary" type="submit" name="submit">Kúpiť</button>
         </div>
 
         <div class="rectengle">
@@ -54,7 +54,7 @@ $view->setLayout('root');
                 <p>Cena za deň: <span>1.10 € / deň</span></p>
             </div>
 
-            <button class="btn btn-primary button-green" type="submit" name="submit">Kúpiť</button>
+            <button class="button-green btn btn-primary" type="submit" name="submit">Kúpiť</button>
         </div>
     </div>
 </div>

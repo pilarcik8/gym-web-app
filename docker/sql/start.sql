@@ -25,9 +25,15 @@ CREATE TABLE `group_classes` (
                                  `date` date NOT NULL,
                                  `duration_minutes` int(10) unsigned ZEROFILL NOT NULL,
                                  `trainer_id` int(10) unsigned NOT NULL,
+                                 `capacity` int(10) unsigned NOT NULL DEFAULT 0,
+                                 `description` VARCHAR(65535) NULL,
                                  PRIMARY KEY (`id`),
                                  KEY `fk_groupclass_trainer` (`trainer_id`),
-                                 CONSTRAINT `fk_groupclass_trainer` FOREIGN KEY (`trainer_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                                 CONSTRAINT `fk_groupclass_trainer`
+                                     FOREIGN KEY (`trainer_id`) REFERENCES `accounts` (`id`)
+                                         ON DELETE CASCADE ON UPDATE CASCADE,
+                                 CONSTRAINT `chk_group_classes_capacity`
+                                     CHECK (`capacity` >= 0)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 DROP TABLE IF EXISTS `group_class_participants`;
@@ -37,8 +43,12 @@ CREATE TABLE `group_class_participants` (
                                             `customer_note` varchar(250) DEFAULT NULL,
                                             PRIMARY KEY (`customer_id`,`group_class_id`),
                                             KEY `fk_participant_groupclass` (`group_class_id`),
-                                            CONSTRAINT `fk_participant_customer` FOREIGN KEY (`customer_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-                                            CONSTRAINT `fk_participant_groupclass` FOREIGN KEY (`group_class_id`) REFERENCES `group_classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                                            CONSTRAINT `fk_participant_customer`
+                                                FOREIGN KEY (`customer_id`) REFERENCES `accounts` (`id`)
+                                                    ON DELETE CASCADE ON UPDATE CASCADE,
+                                            CONSTRAINT `fk_participant_groupclass`
+                                                FOREIGN KEY (`group_class_id`) REFERENCES `group_classes` (`id`)
+                                                    ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 DROP TABLE IF EXISTS `passes`;
@@ -49,7 +59,9 @@ CREATE TABLE `passes` (
                           `expiration_date` date NOT NULL,
                           PRIMARY KEY (`id`),
                           KEY `fk_pass_user` (`user_id`),
-                          CONSTRAINT `fk_pass_user` FOREIGN KEY (`user_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                          CONSTRAINT `fk_pass_user`
+                              FOREIGN KEY (`user_id`) REFERENCES `accounts` (`id`)
+                                  ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
 DROP TABLE IF EXISTS `trainings`;
@@ -62,13 +74,20 @@ CREATE TABLE `trainings` (
                              PRIMARY KEY (`id`),
                              KEY `fk_training_customer` (`customer_id`),
                              KEY `fk_training_trainer` (`trainer_id`),
-                             CONSTRAINT `fk_training_customer` FOREIGN KEY (`customer_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-                             CONSTRAINT `fk_training_trainer` FOREIGN KEY (`trainer_id`) REFERENCES `accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+                             CONSTRAINT `fk_training_customer`
+                                 FOREIGN KEY (`customer_id`) REFERENCES `accounts` (`id`)
+                                     ON DELETE CASCADE ON UPDATE CASCADE,
+                             CONSTRAINT `fk_training_trainer`
+                                 FOREIGN KEY (`trainer_id`) REFERENCES `accounts` (`id`)
+                                     ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
-INSERT INTO `accounts` (`id`, `role`, `first_name`, `last_name`, `email`, `password`, `credit`)
+INSERT INTO `accounts`
+(`id`, `role`, `first_name`, `last_name`, `email`, `password`, `credit`)
 VALUES
-    (1, 'admin', 'Jozef', 'Piaček', 'admin@admin.sk', '$2y$10$GRA8D27bvZZw8b85CAwRee9NH5nj4CQA6PDFMc90pN9Wi4VAWq3yq', 0);
+    (1, 'admin', 'Jozef', 'Piaček', 'admin@admin.sk',
+     '$2y$10$GRA8D27bvZZw8b85CAwRee9NH5nj4CQA6PDFMc90pN9Wi4VAWq3yq', 0);
 
-ALTER TABLE accounts
-    ADD CONSTRAINT chk_credit_nonnegative CHECK (credit >= 0);
+ALTER TABLE `accounts`
+    ADD CONSTRAINT `chk_credit_nonnegative`
+        CHECK (`credit` >= 0);

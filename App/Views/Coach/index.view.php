@@ -4,7 +4,7 @@
 /** @var string|null $message */
 
 $trainer_id = $user->getID();
-$groupClasses = \App\Models\GroupClass::getAll('`trainer_id` = ?', [$trainer_id]);
+$groupClasses = \App\Models\Group_Class::getAll('`trainer_id` = ?', [$trainer_id]);
 ?>
 
 <head>
@@ -51,29 +51,40 @@ $groupClasses = \App\Models\GroupClass::getAll('`trainer_id` = ?', [$trainer_id]
                 </tbody>
             </table>
         </div>
-        <div class="card mt-4">
-            <div class="card-body">
-                <h5 class="card-title">Vytvoriť skupinovú hodinu</h5>
-                <form action="" method="post" class="row g-3">
-                    <div class="col-md-6">
-                        <label for="gc-name" class="form-label">Name</label>
+        <hr>
+        <div id="form-create-class">
+            <div>
+                <h4>Vytvoriť skupinovú hodinu</h4>
+                <form action="<?= $link->url('createGroupClass') ?>" method="post" class="row">
+                    <div class="col-md-8">
+                        <label for="gc-name" class="form-label">Pomenovanie</label>
                         <input id="gc-name" name="name" type="text" class="form-control" required maxlength="255" />
                     </div>
 
-                    <div class="col-md-6">
-                        <label for="gc-date" class="form-label">Date &amp; time</label>
+                    <div class="col-md-2">
+                        <label for="gc-capacity" class="form-label">Kapacita</label>
+                        <input id="gc-capacity" name="capacity" type="number" class="form-control" required min="1" value="20" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="gc-date" class="form-label">Dátum</label>
                         <input id="gc-date" name="date" type="datetime-local" class="form-control" required />
                     </div>
 
-                    <div class="col-md-4">
-                        <label for="gc-duration" class="form-label">Duration (minutes)</label>
-                        <input id="gc-duration" name="duration_minutes" type="number" class="form-control" required min="1" />
+                    <div class="col-md-3">
+                        <label for="gc-duration" class="form-label">Dĺžka trvania (minúty)</label>
+                        <input id="gc-duration" name="duration_minutes" type="number" class="form-control" required min="1" value="60" />
+                    </div>
+
+                    <div class="col-md-10">
+                        <label for="gc-description" class="form-label">Popis</label>
+                        <textarea id="gc-description" name="description" class="form-control" rows="3" maxlength="1000"></textarea>
                     </div>
 
                     <input type="hidden" name="trainer_id" value="<?= $trainer_id ?>" />
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Create Group Class</button>
+                        <button type="submit" id="button" class="btn btn-primary">Vytvor</button>
                     </div>
                 </form>
             </div>

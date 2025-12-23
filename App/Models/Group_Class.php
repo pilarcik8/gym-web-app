@@ -4,13 +4,30 @@ namespace App\Models;
 
 use Framework\Core\Model;
 
-class GroupClass extends Model {
+class Group_Class extends Model {
     protected ?int $id = null;
-    protected string $name = '';
-    protected string $date = '';
-    protected int $duration_minutes = 0;
-    protected int $trainer_id = 0;
-    protected int $capacity = 0;
+    protected string $name;
+    protected string $date;
+    protected int $duration_minutes;
+    protected int $trainer_id;
+    protected int $capacity;
+    protected ?string $description;
+
+    public function __construct(
+        string $name = '',
+        string $date = '',
+        int $duration_minutes = 0,
+        int $trainer_id = 0,
+        int $capacity = 0,
+        ?string $description = null
+    ) {
+        $this->name = $name;
+        $this->date = $date;
+        $this->duration_minutes = $duration_minutes;
+        $this->trainer_id = $trainer_id;
+        $this->capacity = $capacity;
+        $this->description = $description;
+    }
 
     public function getId(): ?int
     {
@@ -65,5 +82,15 @@ class GroupClass extends Model {
     public function setCapacity(int $capacity): void
     {
         $this->capacity = $capacity;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): void
+    {
+        $this->description = $description;
     }
 }

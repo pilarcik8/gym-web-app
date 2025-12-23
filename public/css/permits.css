@@ -82,6 +82,10 @@ span {
     background: #0c8d0c;
 }
 
+.button-green:active {
+    background: #0a700a !important;
+}
+
 /* 2 vedľa seba, keď je obrazovka úzka */
 @media (max-width: 900px) {
     .rectengle {

@@ -39,4 +39,10 @@ class CoachController extends BaseController
     {
         return $this->html();
     }
+
+    public function createGroupClass(Request $request): Response
+    {
+        //TODO: implement create coach action
+        return $this->html();
+    }
 }
