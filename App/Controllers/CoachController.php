@@ -61,6 +61,17 @@ class CoachController extends BaseController
                 $description = null;
             }
 
+            $dt = \DateTime::createFromFormat(' Y-m-d\TH:i', $date);
+            $min = new \DateTime('now');
+            $min->modify('+24 hours');
+
+
+
+            if ($dt < $min) {
+                $_SESSION['flash_message'] = "Dátum musí byť aspoň: " . $dt->format('d.m. Y H.i');
+                return $this->redirect($this->url("coach.index"));
+            }
+
             $gc_model = new Group_Class($name, $date, $duration_minutes, $trainer_id, $capacity, $description);
             $gc_model->save();
             $_SESSION['flash_message'] = "Hodina $name bola úspešne vytvorená.";

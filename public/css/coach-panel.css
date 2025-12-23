@@ -27,3 +27,7 @@ hr {
     height: 0.1rem;
     background-color: white;
 }
+
+#table {
+    overflow-y: auto;
+}

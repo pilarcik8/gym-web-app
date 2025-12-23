@@ -5,6 +5,15 @@
 
 $trainer_id = $user->getID();
 $groupClasses = \App\Models\Group_Class::getAll('`trainer_id` = ?', [$trainer_id]);
+
+function splitDateTime($datetimeString) {
+    $dt = new DateTime($datetimeString);
+
+    $date = $dt->format('d.m. Y');
+    $time = $dt->format('H:i');
+
+    return [$date, $time];
+}
 ?>
 
 <head>
@@ -18,23 +27,29 @@ $groupClasses = \App\Models\Group_Class::getAll('`trainer_id` = ?', [$trainer_id
             <div class="text-center text-danger mb-3">
                 <?= @$message ?>
             </div>
-            <table class="table table-striped">
+            <table id="table" class="table table-striped">
                 <thead>
                 <tr>
                     <th>ID</th>
                     <th>Meno</th>
-                    <th>Začiatok</th>
-                    <th>Dĺžka (min)</th>
+                    <th>Dátum</th>
+                    <th>Čas</th>
+                    <th>Dĺžka trvania (min)</th>
                     <th>Kapacita</th>
                     <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($groupClasses as $gc): ?>
+                <?php foreach ($groupClasses as $gc):
+                    $arr = splitDateTime($gc->getStartDatetime());
+                    $date = $arr[0];
+                    $time = $arr[1];
+                ?>
                     <tr>
                         <td><?= $gc->getId() ?></td>
                         <td><?= $gc->getName() ?></td>
-                        <td><?= $gc->getStartDatetime() ?></td>
+                        <td><?= $date ?></td>
+                        <td><?= $time ?></td>
                         <td><?= $gc->getDurationMinutes() ?></td>
                         <td>0/<?= $gc->getCapacity() ?></td>
                         <td>
@@ -68,7 +83,7 @@ $groupClasses = \App\Models\Group_Class::getAll('`trainer_id` = ?', [$trainer_id
 
                     <div class="col-md-3">
                         <label for="gc-date" class="form-label">Dátum</label>
-                        <input id="gc-date" name="date" type="datetime-local" class="form-control" required value=" <?= date("d-m-Y-H-i") ?>"/>
+                        <input id="gc-date" name="date" type="datetime-local" class="form-control" required"/>
                     </div>
 
                     <div class="col-md-3">
