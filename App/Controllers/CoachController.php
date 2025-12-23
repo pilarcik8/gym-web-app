@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Account;
+use App\Models\Group_Class;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -37,12 +39,36 @@ class CoachController extends BaseController
      */
     public function index(Request $request): Response
     {
-        return $this->html();
+        $message = $_SESSION['flash_message'] ?? null;
+        unset($_SESSION['flash_message']);
+
+        return $this->html(compact('message'));
     }
 
+    /**
+     * @throws \Exception
+     */
     public function createGroupClass(Request $request): Response
     {
-        //TODO: implement create coach action
-        return $this->html();
+        if ($request->hasValue('createGroupClass')) {
+            $name = $request->post('name');
+            $date = $request->post('date');
+            $duration_minutes = (int)$request->post('duration_minutes');
+            $trainer_id = (int)$request->post('trainer_id');
+            $capacity = (int)$request->post('capacity');
+            $description = $request->post('description');
+            if ($description === '') {
+                $description = null;
+            }
+
+            $gc_model = new Group_Class($name, $date, $duration_minutes, $trainer_id, $capacity, $description);
+            $gc_model->save();
+            $_SESSION['flash_message'] = "Hodina $name bola úspešne vytvorená.";
+        }
+        else {
+            $_SESSION['flash_message'] = "Chyba pri vytváraní hodiny.";
+        }
+
+        return $this->redirect($this->url("coach.index"));
     }
 }

@@ -7,7 +7,7 @@ use Framework\Core\Model;
 class Group_Class extends Model {
     protected ?int $id = null;
     protected string $name;
-    protected string $date;
+    protected string $start_datetime;
     protected int $duration_minutes;
     protected int $trainer_id;
     protected int $capacity;
@@ -15,14 +15,14 @@ class Group_Class extends Model {
 
     public function __construct(
         string $name = '',
-        string $date = '',
+        string $start_datetime = '',
         int $duration_minutes = 0,
         int $trainer_id = 0,
         int $capacity = 0,
         ?string $description = null
     ) {
         $this->name = $name;
-        $this->date = $date;
+        $this->start_datetime = $start_datetime;
         $this->duration_minutes = $duration_minutes;
         $this->trainer_id = $trainer_id;
         $this->capacity = $capacity;
@@ -44,14 +44,14 @@ class Group_Class extends Model {
         $this->name = $name;
     }
 
-    public function getDate(): string
+    public function getStartDatetime(): string
     {
-        return $this->date;
+        return $this->start_datetime;
     }
 
-    public function setDate(string $date): void
+    public function setStartDatetime(string $start_datetime): void
     {
-        $this->date = $date;
+        $this->start_datetime = $start_datetime;
     }
 
     public function getDurationMinutes(): int

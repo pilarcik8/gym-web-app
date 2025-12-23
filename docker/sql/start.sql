@@ -20,9 +20,9 @@ CREATE TABLE `accounts` (
 
 DROP TABLE IF EXISTS `group_classes`;
 CREATE TABLE `group_classes` (
-                                 `id` int(10) unsigned NOT NULL,
+                                 `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
                                  `name` varchar(100) NOT NULL,
-                                 `date` date NOT NULL,
+                                 `start_datetime` datetime NOT NULL,
                                  `duration_minutes` int(10) unsigned ZEROFILL NOT NULL,
                                  `trainer_id` int(10) unsigned NOT NULL,
                                  `capacity` int(10) unsigned NOT NULL DEFAULT 0,
@@ -53,7 +53,7 @@ CREATE TABLE `group_class_participants` (
 
 DROP TABLE IF EXISTS `passes`;
 CREATE TABLE `passes` (
-                          `id` int(11) unsigned NOT NULL,
+                          `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                           `user_id` int(11) unsigned NOT NULL,
                           `purchase_date` datetime NOT NULL,
                           `expiration_date` date NOT NULL,
@@ -66,7 +66,7 @@ CREATE TABLE `passes` (
 
 DROP TABLE IF EXISTS `trainings`;
 CREATE TABLE `trainings` (
-                             `id` int(11) unsigned NOT NULL,
+                             `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
                              `customer_id` int(11) unsigned NOT NULL,
                              `trainer_id` int(11) unsigned NOT NULL,
                              `purchase_date` datetime NOT NULL,

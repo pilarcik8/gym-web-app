@@ -22,10 +22,6 @@ class AdminController extends BaseController
 
     public function index(Request $request): Response
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
         // read flash message (if any) and clear it
         $message = $_SESSION['flash_message'] ?? null;
         unset($_SESSION['flash_message']);
@@ -41,13 +37,9 @@ class AdminController extends BaseController
      */
     public function changeRole(Request $request): Response
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
         if ($request->hasValue('changeRole')) {
             $id = (int)$request->post('id');
-            $role = trim($request->post('role'));
+            $role = $request->post('role');
 
             $account = Account::getOne($id);
             if ($account) {
@@ -77,10 +69,6 @@ class AdminController extends BaseController
 
     public function deleteUser(Request $request): Response
     {
-        if (session_status() === PHP_SESSION_NONE) {
-            session_start();
-        }
-
         if ($request->hasValue('deleteUser')) {
             $id = (int)$request->post('id');
 

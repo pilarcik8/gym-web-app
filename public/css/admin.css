@@ -7,7 +7,7 @@ h4 {
 
 #div-table {
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 2rem !important;
     max-height: 360px;
     overflow-y: auto;
     border: 1px solid #ddd;

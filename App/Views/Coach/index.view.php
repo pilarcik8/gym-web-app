@@ -34,7 +34,7 @@ $groupClasses = \App\Models\Group_Class::getAll('`trainer_id` = ?', [$trainer_id
                     <tr>
                         <td><?= $gc->getId() ?></td>
                         <td><?= $gc->getName() ?></td>
-                        <td><?= $gc->getDate() ?></td>
+                        <td><?= $gc->getStartDatetime() ?></td>
                         <td><?= $gc->getDurationMinutes() ?></td>
                         <td>0/<?= $gc->getCapacity() ?></td>
                         <td>
@@ -68,7 +68,7 @@ $groupClasses = \App\Models\Group_Class::getAll('`trainer_id` = ?', [$trainer_id
 
                     <div class="col-md-3">
                         <label for="gc-date" class="form-label">Dátum</label>
-                        <input id="gc-date" name="date" type="datetime-local" class="form-control" required />
+                        <input id="gc-date" name="date" type="datetime-local" class="form-control" required value=" <?= date("d-m-Y-H-i") ?>"/>
                     </div>
 
                     <div class="col-md-3">
@@ -84,7 +84,7 @@ $groupClasses = \App\Models\Group_Class::getAll('`trainer_id` = ?', [$trainer_id
                     <input type="hidden" name="trainer_id" value="<?= $trainer_id ?>" />
 
                     <div class="col-12">
-                        <button type="submit" id="button" class="btn btn-primary">Vytvor</button>
+                        <button type="submit" id="button" name="createGroupClass" class="btn btn-primary">Vytvor</button>
                     </div>
                 </form>
             </div>
