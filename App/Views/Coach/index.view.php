@@ -45,17 +45,22 @@ function splitDateTime($datetimeString) {
                         $arr = splitDateTime($gc->getStartDatetime());
                         $date = $arr[0];
                         $time = $arr[1];
+                        $id = $gc->getId();
+                        //TODO: pocet rezervacii
+                        $reservations = 0;
                     ?>
                         <tr>
-                            <td><?= $gc->getId() ?></td>
+                            <td><?= $id ?></td>
                             <td><?= $gc->getName() ?></td>
                             <td><?= $date ?></td>
                             <td><?= $time ?></td>
                             <td><?= $gc->getDurationMinutes() ?></td>
-                            <td>0/<?= $gc->getCapacity() ?></td>
+                            <td><?= $reservations ?>/<?= $gc->getCapacity() ?></td>
                             <td>
-                                <a href="">Edit</a> |
-                                <a href="" onclick="return confirm('Delete?')">Delete</a>
+                                <form method="post" action="<?= $link->url("deleteGroupClass") ?>" onsubmit="return confirm('Naozaj chcete odstrániť tohto skupinový tréning? Používateľov účet nebude možné navrátiť.');">
+                                    <input type="hidden" name="id" value="<?= $id ?>">
+                                    <button type="submit" name="deleteGroupClass" class="btn btn-sm btn-danger">Odstrániť</button>
+                                </form>
                             </td>
                         </tr>
                     <?php endforeach;

@@ -134,10 +134,6 @@ class AuthController extends BaseController
             $hash = password_hash($password, PASSWORD_DEFAULT);
 
             $userModel = new Account($email, $hash, $first_name, $last_name);
-            //$userModel->setEmail($email);
-            //$userModel->setPassword($hash);
-            //$userModel->setFirstName($first_name);
-            //$userModel->setLastName($last_name);
 
             $userModel->save();
             return $this->redirect($this->url("auth.login")); // spravne registrovany

@@ -119,4 +119,26 @@ class CoachController extends BaseController
 
         return $this->redirect($this->url("coach.index"));
     }
+
+    /**
+     * @throws \Exception
+     */
+    public function deleteGroupClass(Request $request): Response {
+        if ($request->hasValue('deleteGroupClass')) {
+            $id = (int)$request->post('id');
+
+            $groupClass = Group_Class::getOne($id);
+            if (!$groupClass) {
+                $_SESSION['flash_message'] = "Hodina s ID #$id nebola nájdená.";
+                return $this->redirect($this->url("coach.index"));
+            }
+
+            $groupClass->delete();
+            $_SESSION['flash_message'] = "Hodina s ID #$id bola úspešne zmazaná.";
+        } else {
+            $_SESSION['flash_message'] = "Chyba pri mazaní hodiny.";
+        }
+        return $this->redirect($this->url("coach.index"));
+    }
+
 }
