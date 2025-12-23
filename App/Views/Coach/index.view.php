@@ -23,54 +23,56 @@ function splitDateTime($datetimeString) {
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h4>Your Group Trainings</h4>
+            <h4>Vaše skupinové tréningy</h4>
             <div class="text-center text-danger mb-3">
                 <?= @$message ?>
             </div>
-            <table id="table" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Meno</th>
-                    <th>Dátum</th>
-                    <th>Čas</th>
-                    <th>Dĺžka trvania (min)</th>
-                    <th>Kapacita</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($groupClasses as $gc):
-                    $arr = splitDateTime($gc->getStartDatetime());
-                    $date = $arr[0];
-                    $time = $arr[1];
-                ?>
+            <div id="div-table">
+                <table class="table table-sm table-striped mb-0">
+                    <thead>
                     <tr>
-                        <td><?= $gc->getId() ?></td>
-                        <td><?= $gc->getName() ?></td>
-                        <td><?= $date ?></td>
-                        <td><?= $time ?></td>
-                        <td><?= $gc->getDurationMinutes() ?></td>
-                        <td>0/<?= $gc->getCapacity() ?></td>
-                        <td>
-                            <a href="">Edit</a> |
-                            <a href="" onclick="return confirm('Delete?')">Delete</a>
-                        </td>
+                        <th>ID</th>
+                        <th>Meno</th>
+                        <th>Dátum</th>
+                        <th>Čas</th>
+                        <th>Dĺžka trvania (min)</th>
+                        <th>Kapacita</th>
+                        <th></th>
                     </tr>
-                <?php endforeach;
-                if (empty($groupClasses)): ?>
-                    <tr>
-                        <td colspan="6" class="text-center">Nemáte žiadne skupinové hodiny naplánované.</td>
-                    </tr>
-                <?php endif; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($groupClasses as $gc):
+                        $arr = splitDateTime($gc->getStartDatetime());
+                        $date = $arr[0];
+                        $time = $arr[1];
+                    ?>
+                        <tr>
+                            <td><?= $gc->getId() ?></td>
+                            <td><?= $gc->getName() ?></td>
+                            <td><?= $date ?></td>
+                            <td><?= $time ?></td>
+                            <td><?= $gc->getDurationMinutes() ?></td>
+                            <td>0/<?= $gc->getCapacity() ?></td>
+                            <td>
+                                <a href="">Edit</a> |
+                                <a href="" onclick="return confirm('Delete?')">Delete</a>
+                            </td>
+                        </tr>
+                    <?php endforeach;
+                    if (empty($groupClasses)): ?>
+                        <tr>
+                            <td colspan="6" class="text-center">Nemáte žiadne skupinové hodiny naplánované.</td>
+                        </tr>
+                    <?php endif; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <hr>
         <div id="form-create-class">
             <div>
                 <h4>Vytvoriť skupinovú hodinu</h4>
-                <form action="<?= $link->url('createGroupClass') ?>" method="post" class="row">
+                <form id="form" action="<?= $link->url('createGroupClass') ?>" method="post" class="row">
                     <div class="col-md-8">
                         <label for="gc-name" class="form-label">Pomenovanie</label>
                         <input id="gc-name" name="name" type="text" class="form-control" required maxlength="255" />
@@ -83,7 +85,7 @@ function splitDateTime($datetimeString) {
 
                     <div class="col-md-3">
                         <label for="gc-date" class="form-label">Dátum</label>
-                        <input id="gc-date" name="date" type="datetime-local" class="form-control" required"/>
+                        <input id="gc-date" name="date" type="datetime-local" class="form-control" required value="<?= date('Y-m-d\TH:i') ?>"/>
                     </div>
 
                     <div class="col-md-3">

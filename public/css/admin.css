@@ -7,8 +7,11 @@ h4 {
 
 #div-table {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     overflow-y: auto;
     border: 0.1rem solid #ddd;
     padding: 0.5rem;
     border-radius:0.5rem;
+
+    max-height: 50vh;
 }
