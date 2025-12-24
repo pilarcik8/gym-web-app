@@ -1,0 +1,78 @@
+#div-table {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    overflow-y: auto;
+    border: 0.1rem solid #ddd;
+    padding: 0.5rem;
+    border-radius:0.5rem;
+    max-height: 50vh;
+}
+
+h4 {
+    margin-top: 1.5rem;
+    font-weight: 600;
+    font-size: 3rem;
+    color: #ffffff;
+}
+
+#button-add-amount, #modal-button-send {
+    background: #0ea30e;
+}
+
+#button-add-amount:hover, #modal-button-send:hover {
+    background: #0c8d0c;
+}
+
+#button-add-amount:active, #modal-button-send:active {
+    background: #0a700a;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-card {
+    background: #fff;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 6px 24px rgba(0,0,0,0.2);
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.modal-label {
+    margin-bottom: 0.5rem;
+    color: #000000;
+}
+
+/* small responsive adjustments */
+@media (max-width: 480px) {
+    .modal-card {
+        padding: 1rem;
+        max-width: 95%;
+    }
+}
+
+#modal-title {
+    color: black;
+    font-weight: 600;
+}

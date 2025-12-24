@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Account;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -37,6 +38,25 @@ class ReceptionController extends BaseController
      */
     public function index(Request $request): Response
     {
-        return $this->html();
+        $message = $_SESSION['flash_message'] ?? null;
+        unset($_SESSION['flash_message']);
+
+        return $this->html(compact('message'));
+    }
+
+    public function addCredit(Request $request): Response
+    {
+        $message = null;
+        if ($request->hasValue('addCredit')) {
+            $amount = (float)$request->post('amount');
+            $id = (int)$request->post('id');
+            $acc = Account::getOne($id);
+            if (!$acc) {
+                $_SESSION['flash_message'] = "Účet s ID $id neexistuje.";
+            }
+            $acc->setCredit($acc->getCredit() + $amount);
+            $acc->save();
+        }
+        return $this->redirect($this->url("reception.index"));
     }
 }
