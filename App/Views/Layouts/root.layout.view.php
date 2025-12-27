@@ -76,6 +76,8 @@
                                 <span><?= $user->getName() ?></span>
                                 <?php if ($user->getRole() === 'customer'): ?>
                                     <small class="text-muted">Kredit: <?= number_format((float)$user->getCredit(), 2, ',', '') ?> €</small>
+                                <?php else : ?>
+                                    <small class="text-muted">Roľa: <?= ucfirst($user->getRole()) ?></small>
                                 <?php endif; ?>
                             </div>
                         </a>

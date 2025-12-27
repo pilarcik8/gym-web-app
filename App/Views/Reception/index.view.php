@@ -17,7 +17,7 @@ $accounts = Account::getAll('`role` = ?', ['customer']);
 <div class="container-fluid">
     <div class="row">
         <div class="col">
-            <h4>Účty</h4>
+            <h4>Zákaznícke Účty</h4>
             <div class="text-center text-danger mb-3">
                 <?= @$message ?>
             </div>

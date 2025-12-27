@@ -54,6 +54,11 @@ class ReceptionController extends BaseController
             if (!$acc) {
                 $_SESSION['flash_message'] = "Účet s ID $id neexistuje.";
             }
+
+            if ($acc->getRole() != 'customer') {
+                $_SESSION['flash_message'] = "Účet s ID $id nie je zákaznícky účet.";
+            }
+
             $acc->setCredit($acc->getCredit() + $amount);
             $acc->save();
         }

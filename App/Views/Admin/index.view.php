@@ -51,14 +51,14 @@ $accounts = App\Models\Account::getAll();
                                         <option value="reception" <?= $role === 'reception' ? 'selected' : '' ?>>reception</option>
                                         <option value="trainer" <?= $role === 'trainer' ? 'selected' : '' ?>>trainer</option>
                                     </select>
-                                    <button type="submit" name="changeRole" class="btn btn-sm btn-primary">Change</button>
+                                    <button type="submit" name="changeRole" class="btn btn-sm btn-primary">Zmen</button>
                                 </form>
                             </td>
 
                             <td>
                                 <form method="post" action="<?= $link->url("deleteUser") ?>" onsubmit="return confirm('Naozaj chcete odstrániť tohto používatela? Používateľov účet nebude možné navrátiť.');">
                                     <input type="hidden" name="id" value="<?= $id ?>">
-                                    <button type="submit" name="deleteUser" class="btn btn-sm btn-danger">Delete</button>
+                                    <button type="submit" name="deleteUser" class="btn btn-sm btn-danger">Odstrán</button>
                                 </form>
                             </td>
                         </tr>
