@@ -4,6 +4,8 @@
 /** @var \Framework\Support\LinkGenerator $link */
 /** @var \Framework\Auth\AppUser $user */
 
+$account = \App\Models\Account::getOne($user->getId());
+
 ?>
 
 <!doctype html>
@@ -73,9 +75,9 @@
                            aria-expanded="false">
                             <i class="fa-solid fa-user"></i>
                             <div class="d-flex flex-column align-items-start" style="line-height:1;">
-                                <span><?= $user->getName() ?></span>
+                                <span id="user-name"><?= $user->getName() ?></span>
                                 <?php if ($user->getRole() === 'customer'): ?>
-                                    <small class="text-muted">Kredit: <?= number_format((float)$user->getCredit(), 2, ',', '') ?> €</small>
+                                    <small class="text-muted">Kredit: <?= number_format((float)$account->getCredit(), 2, ',', '') ?> €</small>
                                 <?php else : ?>
                                     <small class="text-muted">Roľa: <?= ucfirst($user->getRole()) ?></small>
                                 <?php endif; ?>

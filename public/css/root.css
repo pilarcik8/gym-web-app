@@ -60,6 +60,10 @@ body {
     }
 }
 
+#user-name {
+    font-weight: 1000;
+}
+
 /* ---------- FOOTER ---------- */
 
 #footer {

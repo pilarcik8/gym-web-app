@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Models\Pass;
+use App\Models\Account;
+use App\Configuration;
 use Framework\Core\BaseController;
 use Framework\Http\Request;
 use Framework\Http\Responses\Response;
@@ -67,6 +70,64 @@ class HomeController extends BaseController
 
     public function permits(Request $request): Response
     {
-        return $this->html();
+        $message = $_SESSION['flash_message'] ?? null;
+
+        return $this->html(compact('message'));
+    }
+
+    public function buy_permit(Request $request): Response
+    {
+        if (!$this->user->isLoggedIn()) {
+            return $this->redirect($this->url('auth.login'));
+        }
+
+        if (!$request->hasValue('buy_permit')) {
+            return $this->redirect($this->url('home.permits'));
+        }
+
+        $userId = (int)$request->post('user_id');
+        $days = (int)$request->post('days');
+        $price = (float)$request->post('price');
+        $account = Account::getOne($userId);
+
+        if (!$account) {
+            $_SESSION['flash_message'] = 'Účet nebol nájdený.';
+            return $this->redirect($this->url('home.permits'));
+        }
+
+        $now = new \DateTime();
+        $activePasses = Pass::getCount('`user_id` = ? AND `expiration_date` > ?', [$userId, $now->format('Y-m-d H:i:s')]);
+
+        if ($activePasses > 0) {
+            $_SESSION['flash_message'] = 'Máte už aktívnu permanentku.';
+            return $this->redirect($this->url('home.permits'));
+        }
+
+        if ($account->getRole() !== 'customer') {
+            $_SESSION['flash_message'] = 'Len zákazníci môžu kupovať permanentky.';
+            return $this->redirect($this->url('home.permits'));
+        }
+
+        if ($account->getCredit() < $price) {
+            $_SESSION['flash_message'] = 'Nedostatok kreditu na nákup permanentky.';
+            return $this->redirect($this->url('home.permits'));
+        }
+
+        $account->setCredit($account->getCredit() - $price);
+        $account->save();
+
+        $this->app->getSession()->set(Configuration::IDENTITY_SESSION_KEY, $account);
+
+        $purchaseDate = new \DateTime();
+        $expiration = (clone $purchaseDate)->modify("+$days days");
+
+        $pass = new Pass();
+        $pass->setUserId($userId);
+        $pass->setPurchaseDate($purchaseDate->format('Y-m-d H:i:s'));
+        $pass->setExpirationDate($expiration->format('Y-m-d H:i:s'));
+        $pass->save();
+        $_SESSION['flash_message'] = 'Permanentka zakúpená.';
+
+        return $this->redirect($this->url('home.permits'));
     }
 }

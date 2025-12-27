@@ -65,18 +65,10 @@ class AppUser
         return null;
     }
 
-    public function getCredit(): ?float
-    {
-        if ($this->identity instanceof Account) {
-            return $this->identity->getCredit();
-        }
-        return null;
-    }
-
     public function getID() : ?int
     {
         if ($this->identity instanceof Account) {
-            return $this->identity->getID();
+            return $this->identity->getId();
         }
         return null;
     }

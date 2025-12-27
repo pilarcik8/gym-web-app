@@ -1,13 +1,46 @@
 <?php
 /** @var \Framework\Support\LinkGenerator $link */
 /** @var \Framework\Support\View $view */
+/** @var \Framework\Auth\AppUser $user */
 
 $view->setLayout('root');
+
+$permits = [
+    [
+        'title' => 'Týždenná',
+        'days' => 7,
+        'price' => 20.0,
+    ],
+    [
+        'title' => 'Mesačná',
+        'days' => 30,
+        'price' => 49.99,
+    ],
+    [
+        'title' => 'Ročná',
+        'days' => 365,
+        'price' => 399.99,
+    ],
+];
 ?>
 
 <head>
     <link rel="stylesheet" href="<?= $link->asset('/css/permits.css') ?>">
+    <script src="<?= $link->asset('js/permits.js') ?>"></script>
 </head>
+
+<?php if (!empty($message)): ?>
+    <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true">
+        <div class="modal-window" role="document">
+            <div class="modal-body">
+                <p><?= $message ?></p>
+                <div class="text-center modal-close">
+                    <button id="modal-close" class="btn btn-primary">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
 
 <div class="permits-hero">
     <h1>Cenník</h1>
@@ -15,46 +48,31 @@ $view->setLayout('root');
 
     <div class="container">
 
-        <div class="rectengle">
-            <div class="rect-header">
-                <h3>Týždenná</h3>
+        <?php foreach ($permits as $p):
+            $title = $p['title'];
+            $days = (int)$p['days'];
+            $price = (float)$p['price'];
+            $priceFormatted = number_format($price, 2, ',', '');
+            $pricePerDay = number_format($price / max(1, $days), 2, ',', '');
+            ?>
+            <div class="rectengle">
+                <div class="rect-header">
+                    <h3><?= $title ?></h3>
+                </div>
+
+                <div class="rect-body">
+                    <p>Dĺžka trvania: <span><?= $days ?> dní</span></p>
+                    <p>Celková cena: <span><?= $priceFormatted ?> €</span></p>
+                    <p>Cena za deň: <span><?= $pricePerDay ?> € / deň</span></p>
+                </div>
+                <form method="post" action="<?= $link->url('home.buy_permit') ?>">
+                    <input type="hidden" name="user_id" value="<?= $user->isLoggedIn() ? $user->getId() : '' ?>">
+                    <input type="hidden" name="days" value="<?= $days ?>">
+                    <input type="hidden" name="price" value="<?= $price ?>">
+                    <button class="button-green btn btn-primary" type="submit" name="buy_permit">Kúpiť</button>
+                </form>
             </div>
+        <?php endforeach; ?>
 
-            <div class="rect-body">
-                <p>Dĺžka trvania: <span>7 dní</span></p>
-                <p>Celková cena: <span>15 €</span></p>
-                <p>Cena za deň: <span>2.14 € / deň</span></p>
-            </div>
-
-            <button class="button-green btn btn-primary" type="submit" name="submit">Kúpiť</button>
-        </div>
-
-        <div class="rectengle">
-            <div class="rect-header">
-                <h3>Mesačná</h3>
-            </div>
-
-            <div class="rect-body">
-                <p>Dĺžka trvania: <span>30 dní</span></p>
-                <p>Celková cena: <span>45 €</span></p>
-                <p>Cena za deň: <span>1.50 € / deň</span></p>
-            </div>
-
-            <button class="button-green btn btn-primary" type="submit" name="submit">Kúpiť</button>
-        </div>
-
-        <div class="rectengle">
-            <div class="rect-header">
-                <h3>Ročná</h3>
-            </div>
-
-            <div class="rect-body">
-                <p>Dĺžka trvania: <span>365 dní</span></p>
-                <p>Celková cena: <span>400 €</span></p>
-                <p>Cena za deň: <span>1.10 € / deň</span></p>
-            </div>
-
-            <button class="button-green btn btn-primary" type="submit" name="submit">Kúpiť</button>
-        </div>
     </div>
 </div>
